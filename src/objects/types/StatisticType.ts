@@ -1,25 +1,48 @@
 import {
-    ObjectType, Field, Int,
+    ObjectType, Field, Int, Float,
 } from "type-graphql";
-import { AbstractPeriod } from "../interface/AbstractPeriod";
-import { AbstractStatistic } from "../interface";
+import { AbstractStatistic, AbstractPeriod } from "../interface";
 
 @ObjectType({
-    implements: [AbstractPeriod, AbstractPeriod],
 })
 export class StatisticType implements AbstractPeriod, AbstractStatistic {
 
+    @Field(() => Int, {
+        nullable: false,
+        simple: true,
+    })
+    count: number;
 
-    public fromDate: Date;
 
-    public toDate: Date;
+    @Field(() => Float, {
+        nullable: false,
+        simple: true,
+    })
+    average: number;
 
-    public average: number;
+    @Field(() => Float, {
+        nullable: true,
+        simple: true,
+    })
+    deviation?: number;
 
-    public count: number;
+    @Field(() => Float, {
+        nullable: true,
+        simple: true,
+    })
+    maxValue?: number;
 
-    public deviation?: number;
+    @Field(() => Date, {
+        nullable: false,
+        simple: true,
+    })
+    fromDate: Date;
 
-    public maxValue?: number;
+
+    @Field(() => Date, {
+        nullable: false,
+        simple: true,
+    })
+    toDate: Date;
 
 }

@@ -4,7 +4,6 @@ import {
 import { AbstractStatistic } from "../interface";
 
 @ObjectType({
-    implements: AbstractStatistic,
 })
 export class QueryReportType implements AbstractStatistic {
 
